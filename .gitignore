@@ -1,0 +1,7 @@
+# Project exclude paths
+/coupon-eureka/target/
+/coupon-gateway/target/
+/imooc-coupon-service/coupon-common/target/
+/imooc-coupon-service/coupon-distribution/target/
+/imooc-coupon-service/coupon-settlement/target/
+/imooc-coupon-service/coupon-template/target/

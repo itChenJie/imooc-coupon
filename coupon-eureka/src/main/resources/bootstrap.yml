@@ -1,0 +1,47 @@
+#bootstrap.yml的加载优先级高于 application.yml
+spring:
+  application:
+    name: coupon-eureka
+  profiles: server1
+server:
+  port: 8000
+eureka:
+  instance:
+    hostname: server1
+    #springcloud 默认是true 不允许一个ip地址部署多个服务 ，我们这为了在同一个ip地址上部署多个服务所以要改成false
+    prefer-ip-address: false
+  client:
+    service-url:
+      defaultZone: http://server2:8001/eureka/,http://server3:8002/eureka/
+
+---
+spring:
+  application:
+    name: coupon-eureka
+  profiles: server2
+server:
+  port: 8001
+eureka:
+  instance:
+    hostname: server2
+    #springcloud 默认是true 不允许一个ip地址部署多个服务 ，我们这为了在同一个ip地址上部署多个服务所以要改成false
+    prefer-ip-address: false
+  client:
+    service-url:
+      defaultZone: http://server1:8000/eureka/,http://server3:8002/eureka/
+
+---
+spring:
+  application:
+    name: coupon-eureka
+  profiles: server3
+server:
+  port: 8002
+eureka:
+  instance:
+    hostname: server3
+    #springcloud 默认是true 不允许一个ip地址部署多个服务 ，我们这为了在同一个ip地址上部署多个服务所以要改成false
+    prefer-ip-address: false
+  client:
+    service-url:
+      defaultZone: http://server1:8000/eureka/,http://server2:8001/eureka/
